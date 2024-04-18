@@ -1,0 +1,63 @@
+﻿@model EmployeeLeaveApplicationViewModel
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee Leaves</title>
+</head>
+<body>
+    <h1>Employee Leaves</h1>
+    <form asp-action="GetLeaveApplicationsByEmployeeName" method="get">
+        <input type="text" name="employeeName" placeholder="Search for an employee...">
+        <button type="submit">Search</button>
+    </form>
+
+    <div>
+        <form asp-controller="EmployeeLeaves" asp-action="LeaveApplicationsByMonth" method="get">
+            <label for="month">Select Month:</label>
+            <select name="month" id="month">
+                <option value="1">January</option>
+                <option value="2">February</option>
+                <option value="3">March</option>
+                <option value="4">April</option>
+                <option value="5">May</option>
+                <option value="6">June</option>
+                <option value="7">July</option>
+                <option value="8">August</option>
+                <option value="9">September</option>
+                <option value="10">October</option>
+                <option value="11">November</option>
+                <option value="12">December</option>
+            </select>
+            <button type="submit">Get Leave Applications</button>
+        </form>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Employee Name
+                </th>
+                <th>
+                    Leave Application Note
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var employee in Model.Employees)
+            {
+                <tr>
+                    <td>
+                        @employee.EmployeeName
+                    </td>
+                    <td>
+                        @employee.LeaveApplicationNote
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+</html>

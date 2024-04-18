@@ -1,0 +1,31 @@
+﻿@model EmployeeLeaveApplicationViewModel
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Leave Applications by Month</title>
+</head>
+<body>
+    <h1>Leave Applications by Month</h1>
+    <h2>@Model.Month @Model.Year</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Employee Name</th>
+                <th>Total Leave Days</th>
+                <th>Application Dates</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var employeeLeaveDays in Model.EmployeeLeaveDays)
+            {
+                <tr>
+                    <td>@employeeLeaveDays.EmployeeId</td>
+                    <td>@employeeLeaveDays.TotalLeaveDays</td>
+                    <td>@employeeLeaveDays.ApplicationDates</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+</html>
